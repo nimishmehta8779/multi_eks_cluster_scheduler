@@ -1,0 +1,32 @@
+# Copy this file to terraform.tfvars and fill in your values
+
+aws_region            = "us-east-1"
+environment           = "prod"
+management_account_id = "123456789012"
+external_id           = "your-secure-external-id-here"
+
+# Optional: explicit list of target accounts (empty = auto-discover from Organizations)
+target_account_ids = []
+
+# Networking (REQUIRED)
+vpc_id             = "vpc-xxxxxxxxxxxxxxxxx"
+private_subnet_ids = ["subnet-aaaaaaaaaaaaa", "subnet-bbbbbbbbbbbbb"]
+public_subnet_ids  = ["subnet-ccccccccccccc", "subnet-ddddddddddddd"]
+
+# Spoke role
+spoke_role_name = "eks-operator-spoke"
+
+# DynamoDB table names (defaults are fine for most deployments)
+# dynamodb_operations_table    = "eks-operations"
+# dynamodb_cluster_state_table = "eks-cluster-state"
+# dynamodb_schedules_table     = "eks-schedules"
+
+# Scaling
+lambda_max_concurrency = 10
+service_desired_count  = 2
+
+# Logging
+log_retention_days = 30
+
+# App output directory (relative to terraform/)
+app_output_dir = "../app"
